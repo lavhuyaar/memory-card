@@ -44,9 +44,9 @@ function App() {
 
       const shuffledPokemons = shuffle(pokemons);
       setPokemons(shuffledPokemons); //And shuffle the cards (pokemons array)
-      const newScore = score + 1; //Increments score by 1
+      const newScore = score + 1; //Increments current score by 1
       setScore(newScore);
-      setBestScore(newScore > bestScore ? newScore : bestScore); //Checkc if the current score is the best score yet
+      setBestScore(newScore > bestScore ? newScore : bestScore); //Checks if the current score is the best score yet
       //And sets best score after that
     }
   };
