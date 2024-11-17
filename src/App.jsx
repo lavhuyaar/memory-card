@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "./components/Card/Card";
 import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const [score, setScore] = useState(0); //Current score
@@ -78,6 +79,7 @@ function App() {
           />
         ))}
       </main>
+      <Footer />
     </>
   );
 }
