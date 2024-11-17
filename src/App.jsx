@@ -61,7 +61,7 @@ function App() {
   useEffect(() => {
     if (score >= 15) {
       //If clicked
-      alert("Won"); //Alert
+      alert("You won! Congratulations!"); //Alert
       resetGame(); //And resets the game
     }
   }, [score]); //Checks everytime the current score is updated
