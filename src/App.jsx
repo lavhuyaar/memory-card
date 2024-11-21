@@ -16,11 +16,20 @@ function App() {
         "https://pokeapi.co/api/v2/pokemon?limit=15"
       );
       const data = await response.json();
-      const shuffledPokemons = shuffle(data.results); //Shuffle
+      const shuffledPokemons = shuffle(data.results); //Shuffles the pokemons
       setPokemons(shuffledPokemons);
     };
     getPokemons();
   }, []); //Empty dependency array
+
+  //Checks whether all the cards are clicked
+  useEffect(() => {
+    if (score >= 15) {
+      //If clicked
+      alert("You won! Congratulations!"); //Alert
+      resetGame(); //And resets the game
+    }
+  }, [score]); //Checks everytime the current score is updated
 
   //Shuffles the array passed as the parameter (Fisher-Yates Shuffle)
   const shuffle = (arr) => {
@@ -36,6 +45,7 @@ function App() {
   const cardOnClick = (index) => {
     if (clickedPokemons.includes(pokemons[index])) {
       //If the card is clicked before
+      alert("Oops! You lost. Try Again!"); //Alert that you lost
       resetGame(); //Resets the game
     } else {
       //Else pushes the clicked card's data to clickedPokemons array
@@ -55,16 +65,10 @@ function App() {
   const resetGame = () => {
     setScore(0); //Sets current score to 0;
     setClickedPokemons([]); //Sets clickedPokemons array to an empty array
-  };
 
-  //Checks whether all the cards are clicked
-  useEffect(() => {
-    if (score >= 15) {
-      //If clicked
-      alert("You won! Congratulations!"); //Alert
-      resetGame(); //And resets the game
-    }
-  }, [score]); //Checks everytime the current score is updated
+    const shuffledPokemons = shuffle(pokemons);
+    setPokemons(shuffledPokemons); //Shuffles the pokemons
+  };
 
   return (
     <>
