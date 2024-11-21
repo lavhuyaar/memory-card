@@ -26,7 +26,6 @@ function Card({ url, cardOnClick, index }) {
     <>
       <div
         className="pokemon-card"
-        id="not-clicked"
         onClick={() => cardOnClick(index)}
       >
         <div className="pokemon-image">
