@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import Card from "./components/Card/Card";
 import Navbar from "./components/Navbar/Navbar";
@@ -9,11 +10,13 @@ function App() {
   const [pokemons, setPokemons] = useState([]); //Array of pokemons
   const [clickedPokemons, setClickedPokemons] = useState([]); //Array of clicked pokemons
 
+  const NUMBER_OF_POKEMONS = 15; //Total no. of pokemons
+
   //Fetches the data of 15 pokemons from PokeAPI (asynchronously) and shuffles it as well
   useEffect(() => {
     const getPokemons = async () => {
       const response = await fetch(
-        "https://pokeapi.co/api/v2/pokemon?limit=15"
+        `https://pokeapi.co/api/v2/pokemon?limit=${NUMBER_OF_POKEMONS}`
       );
       const data = await response.json();
       const shuffledPokemons = shuffle(data.results); //Shuffles the pokemons
@@ -24,7 +27,7 @@ function App() {
 
   //Checks whether all the cards are clicked
   useEffect(() => {
-    if (score >= 15) {
+    if (score >= NUMBER_OF_POKEMONS) {
       //If clicked
       alert("You won! Congratulations!"); //Alert
       resetGame(); //And resets the game
